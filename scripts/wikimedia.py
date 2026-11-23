@@ -36,7 +36,7 @@ for key, q in lines("photos/searches.txt"):
         if not OK.match(lic) or not re.search(r"\.(jpe?g|png)$", p["title"], re.I) or i["width"] < 1000: continue
         art = re.sub("<[^>]+>", "", (m.get("Artist") or {}).get("value", "")).strip()
         res.append({"title": p["title"][5:], "w": i["width"], "h": i["height"], "license": lic, "author": art[:60], "thumb": i.get("thumburl")})
-    res = res[:8]
+    res = res[:5]
     for n, x in enumerate(res):
         x["preview"] = f"photos/search/{key}_{n}.jpg"
         try:
