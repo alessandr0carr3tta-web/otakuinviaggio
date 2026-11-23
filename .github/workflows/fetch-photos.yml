@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: foto
+  cancel-in-progress: false
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -17,4 +20,4 @@ jobs:
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add photos
           git diff --cached --quiet || git commit -m "Foto da Wikimedia"
-          git push
+          git pull --rebase origin main && git push
