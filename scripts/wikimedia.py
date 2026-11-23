@@ -7,9 +7,14 @@ UA = {"User-Agent": "otaku-in-viaggio-photo-fetcher/1.0 (github.com/alessandr0ca
 API = "https://commons.wikimedia.org/w/api.php?"
 OK = re.compile(r"^(CC0|Public domain|PD|CC BY [0-9.]+|CC BY-SA [0-9.]+)", re.I)
 
-def get(url):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
-        return r.read()
+def get(url, tries=6):
+    for k in range(tries):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or k == tries - 1: raise
+            time.sleep(int(e.headers.get("Retry-After") or 0) or 5 * (k + 1))
 
 def api(**p):
     p.update(format="json")
@@ -30,13 +35,14 @@ for key, q in lines("photos/searches.txt"):
         lic = (m.get("LicenseShortName") or {}).get("value", "")
         if not OK.match(lic) or not re.search(r"\.(jpe?g|png)$", p["title"], re.I) or i["width"] < 1000: continue
         art = re.sub("<[^>]+>", "", (m.get("Artist") or {}).get("value", "")).strip()
-        res.append({"title": p["title"][5:], "w": i["width"], "h": i["height"], "license": lic, "author": art[:60]})
+        res.append({"title": p["title"][5:], "w": i["width"], "h": i["height"], "license": lic, "author": art[:60], "thumb": i.get("thumburl")})
     res = res[:8]
     for n, x in enumerate(res):
         x["preview"] = f"photos/search/{key}_{n}.jpg"
-        t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=400, titles="File:" + x["title"])
-        u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
-        open(x["preview"], "wb").write(get(u)); time.sleep(0.5)
+        try:
+            open(x["preview"], "wb").write(get(x.pop("thumb"))); time.sleep(2)
+        except Exception as e:
+            print("ERRORE anteprima", x["title"], e); x["preview"] = None
     json.dump(res, open(f"photos/search/{key}.json", "w"), ensure_ascii=False, indent=1)
 
 for name, title in lines("photos/requests.txt"):
@@ -45,6 +51,6 @@ for name, title in lines("photos/requests.txt"):
     try:
         t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=1600, titles="File:" + title)
         u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
-        open(out, "wb").write(get(u)); time.sleep(0.5)
+        open(out, "wb").write(get(u)); time.sleep(2)
     except Exception as e:
         print("ERRORE", title, e)
