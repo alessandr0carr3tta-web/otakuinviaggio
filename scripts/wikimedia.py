@@ -40,17 +40,20 @@ for key, q in lines("photos/searches.txt"):
     for n, x in enumerate(res):
         x["preview"] = f"photos/search/{key}_{n}.jpg"
         try:
-            open(x["preview"], "wb").write(get(x.pop("thumb"))); time.sleep(2)
+            data = get(x.pop("thumb"))
+            open(x["preview"], "wb").write(data); time.sleep(2)
         except Exception as e:
             print("ERRORE anteprima", x["title"], e); x["preview"] = None
     json.dump(res, open(f"photos/search/{key}.json", "w"), ensure_ascii=False, indent=1)
 
 for name, title in lines("photos/requests.txt"):
     out = f"photos/src/{name}"
-    if os.path.exists(out): continue
+    if os.path.exists(out) and os.path.getsize(out) > 0: continue
     try:
         t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=1600, titles="File:" + title)
         u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
-        open(out, "wb").write(get(u)); time.sleep(2)
+        data = get(u)
+        if data: open(out, "wb").write(data)
+        time.sleep(2)
     except Exception as e:
         print("ERRORE", title, e)
