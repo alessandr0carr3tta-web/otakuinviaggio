@@ -20,3 +20,6 @@ genkan_pd|genkan shoes Japanese house entrance
 ryokan_pd|ryokan room tatami
 trash_pd|Japan trash bin recycling street
 streetfood_pd|Japanese street food stall
+ghibli_pd|Ghibli Museum Mitaka
+akiba_pd|Akihabara street
+shopping_pd|Tokyo shopping street Ginza
