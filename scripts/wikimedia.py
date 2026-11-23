@@ -8,7 +8,7 @@ API = "https://commons.wikimedia.org/w/api.php?"
 OK = re.compile(r"^(CC0|Public domain|PD)", re.I)  # solo foto senza obbligo di citare l'autore
 
 def get(url, tries=6):
-    for k in range(tries):
+    for k in range(tries):  # misure standard di Wikimedia (330/1280) = miniature già pronte, meno blocchi
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
                 return r.read()
@@ -28,7 +28,7 @@ os.makedirs("photos/search", exist_ok=True); os.makedirs("photos/src", exist_ok=
 for key, q in lines("photos/searches.txt"):
     if os.path.exists(f"photos/search/{key}.json"): continue
     r = api(action="query", generator="search", gsrnamespace=6, gsrlimit=50, gsrsearch=q,
-            prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=400)
+            prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=330)
     res = []
     for p in (r.get("query") or {}).get("pages", {}).values():
         i = p["imageinfo"][0]; m = i.get("extmetadata", {})
@@ -50,7 +50,7 @@ for name, title in lines("photos/requests.txt"):
     out = f"photos/src/{name}"
     if os.path.exists(out) and os.path.getsize(out) > 0: continue
     try:
-        t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=1600, titles="File:" + title)
+        t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=1280, titles="File:" + title)
         u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
         data = get(u)
         if data: open(out, "wb").write(data)
