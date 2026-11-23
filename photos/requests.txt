@@ -1,2 +1,1 @@
 # formato: nome-file.jpg|Titolo del file su Wikimedia Commons
-test_slamdunk.jpg|Enoshima Electric Railway and Kamakurakokomae Station.jpg

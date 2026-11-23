@@ -1,7 +1,7 @@
-name: Scarica foto da Wikimedia
+name: Cerca e scarica foto da Wikimedia
 on:
   push:
-    paths: ["photos/requests.txt"]
+    paths: ["photos/requests.txt", "photos/searches.txt", "scripts/wikimedia.py"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -10,23 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Scarica le foto richieste
-        run: |
-          mkdir -p photos/src
-          while IFS='|' read -r name title; do
-            [ -z "$name" ] && continue
-            case "$name" in \#*) continue;; esac
-            out="photos/src/$name"
-            [ -f "$out" ] && continue
-            enc=$(python3 -c "import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1].replace(' ','_')))" "$title")
-            curl -fsSL -A "otaku-in-viaggio-photo-fetcher/1.0 (github.com/alessandr0carr3tta-web/otakuinviaggio)" \
-              -o "$out" "https://commons.wikimedia.org/wiki/Special:FilePath/${enc}?width=1600" || echo "ERRORE: $title"
-            sleep 1
-          done < photos/requests.txt
+      - run: python3 scripts/wikimedia.py
       - name: Salva nel repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add photos/src
-          git diff --cached --quiet || git commit -m "Foto scaricate da Wikimedia"
+          git add photos
+          git diff --cached --quiet || git commit -m "Foto da Wikimedia"
           git push

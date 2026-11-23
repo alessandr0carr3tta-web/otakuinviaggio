@@ -1,0 +1,4 @@
+# formato: chiave|testo da cercare su Wikimedia Commons
+slamdunk|Kamakurakokomae railroad crossing
+enoden|Enoden Kamakura Koko-mae
+kamakura|Kotoku-in Great Buddha Kamakura
