@@ -5,7 +5,7 @@ photos/requests.txt  -> nome.jpg|Titolo file      => photos/src/<nome.jpg> (1600
 import json, os, re, time, urllib.parse, urllib.request
 UA = {"User-Agent": "otaku-in-viaggio-photo-fetcher/1.0 (github.com/alessandr0carr3tta-web/otakuinviaggio)"}
 API = "https://commons.wikimedia.org/w/api.php?"
-OK = re.compile(r"^(CC0|Public domain|PD|CC BY [0-9.]+|CC BY-SA [0-9.]+)", re.I)
+OK = re.compile(r"^(CC0|Public domain|PD)", re.I)  # solo foto senza obbligo di citare l'autore
 
 def get(url, tries=6):
     for k in range(tries):
@@ -27,7 +27,7 @@ def lines(path):
 os.makedirs("photos/search", exist_ok=True); os.makedirs("photos/src", exist_ok=True)
 for key, q in lines("photos/searches.txt"):
     if os.path.exists(f"photos/search/{key}.json"): continue
-    r = api(action="query", generator="search", gsrnamespace=6, gsrlimit=20, gsrsearch=q,
+    r = api(action="query", generator="search", gsrnamespace=6, gsrlimit=50, gsrsearch=q,
             prop="imageinfo", iiprop="url|size|extmetadata", iiurlwidth=400)
     res = []
     for p in (r.get("query") or {}).get("pages", {}).values():

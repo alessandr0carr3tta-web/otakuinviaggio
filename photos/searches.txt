@@ -2,3 +2,11 @@
 slamdunk|Kamakurakokomae railroad crossing
 enoden|Enoden Kamakura Koko-mae
 kamakura|Kotoku-in Great Buddha Kamakura
+konbini_pd1|convenience store Japan
+konbini_pd2|FamilyMart Japan
+konbini_pd3|Lawson Japan store
+konbini_pd4|7-Eleven Japan
+konbini_pd5|onigiri
+konbini_pd6|konbini
+jiufen_pd1|Jiufen
+jiufen_pd2|Jiufen sunset
