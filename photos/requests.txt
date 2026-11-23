@@ -1,1 +1,6 @@
 # formato: nome-file.jpg|Titolo del file su Wikimedia Commons
+pd_konb_cover.jpg|FamilyMart Estació Central Japan International Airport Station shop.jpg
+pd_konb_lawson.jpg|LAWSON Sakurazuka store on 13th June 2025.jpg
+pd_onigiri.jpg|Onigiri 001.jpg
+pd_konb_print.jpg|Media insertion interface for printing at Japanese convenience store.jpg
+pd_konb_snacks.jpg|Hot snacks of FamilyMart in Japan 2021.jpg

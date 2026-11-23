@@ -10,3 +10,7 @@ konbini_pd5|onigiri
 konbini_pd6|konbini
 jiufen_pd1|Jiufen
 jiufen_pd2|Jiufen sunset
+jiufen_pd3|Jioufen
+jiufen_pd4|Jiufen Old Street
+jiufen_pd5|Jiufen Taiwan lanterns
+jiufen_pd6|Ruifang Jiufen
