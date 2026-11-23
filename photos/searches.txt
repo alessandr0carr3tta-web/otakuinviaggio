@@ -14,3 +14,9 @@ jiufen_pd3|Jioufen
 jiufen_pd4|Jiufen Old Street
 jiufen_pd5|Jiufen Taiwan lanterns
 jiufen_pd6|Ruifang Jiufen
+tokyo_train_pd|Tokyo subway train interior passengers
+yen_pd|Japanese yen banknotes coins
+genkan_pd|genkan shoes Japanese house entrance
+ryokan_pd|ryokan room tatami
+trash_pd|Japan trash bin recycling street
+streetfood_pd|Japanese street food stall

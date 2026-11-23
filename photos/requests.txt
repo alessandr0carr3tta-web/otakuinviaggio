@@ -6,3 +6,4 @@ pd_konb_print.jpg|Media insertion interface for printing at Japanese convenience
 pd_konb_snacks.jpg|Hot snacks of FamilyMart in Japan 2021.jpg
 pd_jiufen_night.jpg|Night in Jioufen view from Mt. Keelung 20130711.jpg
 pd_jiufen_stairs.jpg|Jioufen Shuchi Street.jpg
+pd_jiufen_street.jpg|20230604 Jioufen, Taiwan.jpg
