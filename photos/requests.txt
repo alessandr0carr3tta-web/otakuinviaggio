@@ -11,3 +11,5 @@ pd_shibuya2.jpg|Shibuya Scramble crossing.jpg
 pd_ueno_stall.jpg|20181124 Ueno Park seafood stall.jpg
 pd_ryokan.jpg|Ryokan Matsumae in Nara.jpg
 pd_jiufen_shore.jpg|Jiufen shoreline.png
+pd_ghibli.jpg|Ghibli Museum - GhibliMuseum864.jpg
+pd_akiba_night.jpg|Sotokanda, Akihabara Electric Town at night 20231114.png
