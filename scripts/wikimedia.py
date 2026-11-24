@@ -14,7 +14,7 @@ def get(url, tries=6):
                 return r.read()
         except urllib.error.HTTPError as e:
             if e.code != 429 or k == tries - 1: raise
-            time.sleep(int(e.headers.get("Retry-After") or 0) or 5 * (k + 1))
+            w = min(int(e.headers.get("Retry-After") or 0) or 5 * (k + 1), 30); print("429, attendo", w, url[:90], flush=True); time.sleep(w)
 
 def api(**p):
     p.update(format="json")
@@ -54,6 +54,7 @@ for name, title in lines("photos/requests.txt"):
         u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
         data = get(u)
         if data: open(out, "wb").write(data)
+        print("OK", name, len(data or b""), flush=True)
         time.sleep(2)
     except Exception as e:
-        print("ERRORE", title, e)
+        print("ERRORE", title, e, flush=True)
