@@ -23,3 +23,34 @@ streetfood_pd|Japanese street food stall
 ghibli_pd|Ghibli Museum Mitaka
 akiba_pd|Akihabara street
 shopping_pd|Tokyo shopping street Ginza
+sd_crossing|Kamakurakokomae Station
+sd_enoden|Enoden train Kamakura
+sd_enoshima|Enoshima island
+sd_daibutsu|Kotoku-in Great Buddha Kamakura
+sd_shichiri|Shichirigahama beach
+jr_n700|N700 Shinkansen
+jr_tokyostn|Tokyo Station Marunouchi
+jr_gate|JR ticket gate
+jr_kyotostn|Kyoto Station building
+jr_ekiben|ekiben
+kfc_store|KFC Japan store
+kfc_cake|Christmas cake Japan strawberry
+kfc_illum|Christmas illumination Tokyo
+kfc_chicken|fried chicken drumsticks
+kr_gyeong|Gyeongbokgung
+kr_myeong|Myeongdong street food
+kr_hongdae|Hongdae Seoul street
+kr_subway|Seoul Metropolitan Subway train
+kr_bukchon|Bukchon Hanok Village
+ls_shrine|Washinomiya Shrine
+ls_ema|Washinomiya ema
+ls_station|Washinomiya Station
+ny_hatsumode|Hatsumode Meiji Jingu
+ny_bell|Joya no kane
+ny_kadomatsu|Kadomatsu
+ny_sunrise|Hatsuhinode
+ny_fuku|Fukubukuro
+fd_osechi|Osechi
+fd_soba|Toshikoshi soba
+fd_ozoni|Ozoni
+fd_kagami|Kagami mochi
