@@ -65,3 +65,8 @@ ls_ema2|ema votive tablets shrine
 ls_tobu|Tobu Isesaki Line train
 fd_zoni|Zoni soup mochi
 fd_kuro|Kuromame
+ls_omikuji|omikuji
+ls_kuki|Washimiya Kuki Saitama
+ls_wstation|Washinomiya Station Tobu
+fd_zoni2|O-zoni
+kr_palace2|Gyeongbokgung gate
