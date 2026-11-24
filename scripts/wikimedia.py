@@ -50,9 +50,14 @@ for name, title in lines("photos/requests.txt"):
     out = f"photos/src/{name}"
     if os.path.exists(out) and os.path.getsize(out) > 0: continue
     try:
-        t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=1280, titles="File:" + title)
-        u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
-        data = get(u)
+        data = None
+        for wid in (1280, 960, 500):  # le foto più piccole di 1280 px vanno chieste in una misura standard inferiore
+            try:
+                t = api(action="query", prop="imageinfo", iiprop="url", iiurlwidth=wid, titles="File:" + title)
+                u = list(t["query"]["pages"].values())[0]["imageinfo"][0]["thumburl"]
+                data = get(u, tries=3); break
+            except Exception as e2:
+                print("riprovo più piccola", wid, e2, flush=True)
         if data: open(out, "wb").write(data)
         print("OK", name, len(data or b""), flush=True)
         time.sleep(2)
