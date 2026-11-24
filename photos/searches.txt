@@ -54,3 +54,14 @@ fd_osechi|Osechi
 fd_soba|Toshikoshi soba
 fd_ozoni|Ozoni
 fd_kagami|Kagami mochi
+sd_cross2|Kamakura High School railroad crossing
+jr_fuji|Shinkansen Mount Fuji
+jr_platform|Shinkansen platform Tokyo Station
+kfc_short|strawberry shortcake
+kfc_tree|Christmas Tokyo Marunouchi illumination
+kr_palace|Gyeongbokgung Palace Seoul
+kr_tteok|tteokbokki
+ls_ema2|ema votive tablets shrine
+ls_tobu|Tobu Isesaki Line train
+fd_zoni|Zoni soup mochi
+fd_kuro|Kuromame
